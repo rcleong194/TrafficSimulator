@@ -12,6 +12,7 @@ public class car : MonoBehaviour, vehcile
     public Transform raycastPos;
 
     [SerializeField]private int travelPoint = 0;
+    public bool atObstacle = false;
 
     void Start()
     {
@@ -19,28 +20,35 @@ public class car : MonoBehaviour, vehcile
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         RaycastHit2D ray = Physics2D.Raycast(raycastPos.position, raycastPos.right, carBufferDistance);
         Debug.DrawRay(transform.position, transform.right, Color.green);
-        if (ray.collider != null)
+        if (!atObstacle)
         {
-            switch (ray.collider.tag)
+            if (ray.collider != null)
             {
-                case "car":
-                    speed = ray.collider.GetComponent<car>().speed;
-                    drive();
-                    break;
-                default:
-                    drive();
-                    break;
+                //Add to case for more tag types.
+                switch (ray.collider.tag)
+                {
+                    case "car":
+                        speed = ray.collider.GetComponent<car>().speed;
+                        if (ray.distance < carBufferDistance)
+                            speed = speed / 2;
+                        drive();
+                        break;
+                    default:
+                        drive();
+                        break;
+                }
+            }
+            else
+            {
+                speed = maxSpeed;
+                drive();
             }
         }
-        else
-        {
-            speed = maxSpeed;
-            drive();
-        }
+        
         
     }
 
@@ -48,8 +56,6 @@ public class car : MonoBehaviour, vehcile
     {
         float step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, travelPoints[travelPoint].position, step);
-
-        // Check if the position of the cube and sphere are approximately equal.
         if (Vector3.Distance(transform.position, travelPoints[travelPoint].position) < 0.001f)
         {
             if (travelPoint + 1 > travelPoints.Length - 1)
