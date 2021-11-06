@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 328886890633377590}
   - component: {fileID: 328886890633377591}
-  - component: {fileID: 328886890633377584}
+  - component: {fileID: 7291459069784011034}
   m_Layer: 0
   m_Name: stopStreet
   m_TagString: trafficObstacle
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &328886890633377584
+--- !u!114 &7291459069784011034
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,9 +92,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 328886890633377585}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0a7fc93a347bc140ab76016c05136c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 7eb54aa574fa40a4d8e2feb19aaa479b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   obType: 0
   numPoints: 4
   pointSize: 0.2
+  timeToStop: 2

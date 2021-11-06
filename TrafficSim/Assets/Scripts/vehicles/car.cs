@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class car : MonoBehaviour, vehcile
+public class car : MonoBehaviour
 {
 
     public float speed;
@@ -20,7 +20,7 @@ public class car : MonoBehaviour, vehcile
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         RaycastHit2D ray = Physics2D.Raycast(raycastPos.position, raycastPos.right, carBufferDistance);
         Debug.DrawRay(transform.position, transform.right, Color.green);
@@ -52,7 +52,7 @@ public class car : MonoBehaviour, vehcile
         
     }
 
-    public void drive()
+    public virtual void drive()
     {
         float step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, travelPoints[travelPoint].position, step);

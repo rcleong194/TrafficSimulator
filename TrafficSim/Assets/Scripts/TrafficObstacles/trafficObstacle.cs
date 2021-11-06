@@ -4,22 +4,19 @@ using UnityEngine;
 
 public abstract class trafficObstacle : MonoBehaviour
 {
-    public enum obstacleType
-    {
-        stop
-    }
-
-    public obstacleType obType;
     public int numPoints = 4;
     public float pointSize = 0.2f;
 
-    public Queue<car> order = new Queue<car>();
-    protected car movingCar;
+    public Queue<GameObject> order = new Queue<GameObject>();
+    protected GameObject moving;
     protected bool dequeing;
 
     protected virtual void Update()
     {
-        
+        if (order.Count > 0 && !dequeing)
+        {
+            StartCoroutine(QueueCheck());
+        }
     }
 
     [ContextMenu("Add Points")]
@@ -28,13 +25,15 @@ public abstract class trafficObstacle : MonoBehaviour
         for (int i = 0; i < numPoints; i++)
         {
             GameObject point = new GameObject("point");
-            
+
             point.AddComponent<BoxCollider2D>();
+            point.AddComponent<point>();
             point.GetComponent<BoxCollider2D>().isTrigger = true;
             point.transform.localScale = new Vector3(pointSize, pointSize, pointSize);
             point.tag = "trafficObstacle";
             point.transform.parent = this.transform;
             point.transform.localPosition = new Vector3(0, 0, 0);
+            point.layer = 2;
 
         }
     }

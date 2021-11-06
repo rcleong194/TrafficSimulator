@@ -73,9 +73,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8560035cc18f6c8418e1d40544da1a65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 0
   maxSpeed: 3
-  carBufferDistance: 2
+  carBufferDistance: 1
   travelPoints: []
   raycastPos: {fileID: 8082787926302458900}
   travelPoint: 0
