@@ -19,4 +19,4 @@ they may follow fixed routes if this makes things easier.
 
 Overall project is not physics based. Overall functionality is solid but can be improved.
 
-It should be noted that the project focused on being scalable rather than having all functionality working as intended.
+It should be noted that the project focused on being scalable rather than having all functionality working perfectly.
