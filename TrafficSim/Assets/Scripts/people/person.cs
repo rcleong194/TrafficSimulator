@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//Could potentially make a class/interface that both car and person would inherit from. Would rather not though, looks like objects would need different functionality if it was expanded.
 public class person : MonoBehaviour
 {
     public float speed;
@@ -14,11 +16,9 @@ public class person : MonoBehaviour
     void Start()
     {
         speed = Random.Range(lowerSpeed, upperSpeed);
-        //speed = upperSpeed;
         constSpeed = speed;
     }
 
-    // Update is called once per frame
     void Update()
     {
         walk();

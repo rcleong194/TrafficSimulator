@@ -19,19 +19,17 @@ public class point : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.tag);
         switch (collision.tag)
         {
             case "car":
                 
                 car car = collision.GetComponent<car>();
                 car.atObstacle = true;
-                if(mustStop)
-                    car.speed = 0;
+                if (mustStop)
+                    car.stop();
                 controller.order.Enqueue(collision.gameObject);
                 break;
             case "person":
-                Debug.Log("trigger actived");
                 person person = collision.GetComponent<person>();
                 if (mustStop)
                     person.stop();

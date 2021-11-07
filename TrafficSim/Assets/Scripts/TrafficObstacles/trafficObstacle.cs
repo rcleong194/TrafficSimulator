@@ -4,10 +4,10 @@ using UnityEngine;
 
 public abstract class trafficObstacle : MonoBehaviour
 {
-    public int numPoints = 4;
-    public float pointSize = 0.2f;
+    [SerializeField] protected int numPoints = 4;
 
     public Queue<GameObject> order = new Queue<GameObject>();
+    public GameObject pointPrefab;
     protected GameObject moving;
     protected bool dequeing;
 
@@ -18,23 +18,14 @@ public abstract class trafficObstacle : MonoBehaviour
             StartCoroutine(QueueCheck());
         }
     }
-
+    
+    //Adds a number of points to an object using context menu
     [ContextMenu("Add Points")]
     void addPoints()
     {
         for (int i = 0; i < numPoints; i++)
         {
-            GameObject point = new GameObject("point");
-
-            point.AddComponent<BoxCollider2D>();
-            point.AddComponent<point>();
-            point.GetComponent<BoxCollider2D>().isTrigger = true;
-            point.transform.localScale = new Vector3(pointSize, pointSize, pointSize);
-            point.tag = "trafficObstacle";
-            point.transform.parent = this.transform;
-            point.transform.localPosition = new Vector3(0, 0, 0);
-            point.layer = 2;
-
+            GameObject.Instantiate(pointPrefab,transform,false);
         }
     }
 

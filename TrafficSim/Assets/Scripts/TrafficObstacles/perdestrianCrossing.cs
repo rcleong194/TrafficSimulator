@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class perdestrianCrossing : trafficObstacle
 {
-    // Start is called before the first frame update
     Collider2D pedestrianZone;
     int numPersonOnZone = 0;
     bool isPersonOnZone = false;
@@ -16,18 +15,8 @@ public class perdestrianCrossing : trafficObstacle
         
     }
 
-   /* protected override void Update()
-    {
-        if (order.Count > 0)
-        {
-            StartCoroutine(QueueCheck());
-        }
-    }*/
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-
         if(collision.tag == "person")
         {
             numPersonOnZone++;
@@ -36,7 +25,6 @@ public class perdestrianCrossing : trafficObstacle
 
         if(collision.tag == "car")
         {
-            //Debug.Log("car is in zone");
             numCarOnZone++;
             isCarOnZone = true;
         }
@@ -69,7 +57,6 @@ public class perdestrianCrossing : trafficObstacle
                 person person = moving.GetComponent<person>();
                 if (isCarOnZone)
                 {
-                    Debug.Log("firing");
                     person.stop();
                     order.Enqueue(moving);
                 }
@@ -83,13 +70,13 @@ public class perdestrianCrossing : trafficObstacle
                 car movingCar = moving.GetComponent<car>();
                 if (isPersonOnZone || (order.Count > 0 && order.Peek().tag == "person"))
                 {
-                    movingCar.speed = 0;
+                    movingCar.stop();
                     order.Enqueue(moving);
                 }
                 else
                 {
                     movingCar.atObstacle = false;
-                    movingCar.speed = movingCar.maxSpeed;
+                    movingCar.start();
                 }   
             }
             

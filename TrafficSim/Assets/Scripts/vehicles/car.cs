@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class car : MonoBehaviour
+public class car : MonoBehaviour, vehicle
 {
 
-    public float speed;
-    public float maxSpeed;
-    public float carBufferDistance = 1f;
+    [SerializeField] protected float speed;
+    [SerializeField] protected float maxSpeed;
+    [SerializeField] protected float carBufferDistance = 1f;
     public Transform[] travelPoints;
     public Transform raycastPos;
 
-    [SerializeField]private int travelPoint = 0;
+    private int travelPoint = 0;
     public bool atObstacle = false;
 
     void Start()
@@ -19,7 +19,6 @@ public class car : MonoBehaviour
         speed = maxSpeed;
     }
 
-    // Update is called once per frame
     protected virtual void Update()
     {
         RaycastHit2D ray = Physics2D.Raycast(raycastPos.position, raycastPos.right, carBufferDistance);
@@ -48,8 +47,6 @@ public class car : MonoBehaviour
                 drive();
             }
         }
-        
-        
     }
 
     public virtual void drive()
@@ -65,6 +62,16 @@ public class car : MonoBehaviour
 
             transform.right = travelPoints[travelPoint].position - transform.position;
         }
+    }
+
+    public virtual void stop()
+    {
+        speed = 0;
+    }
+
+    public virtual void start()
+    {
+        speed = maxSpeed;
     }
 
 }

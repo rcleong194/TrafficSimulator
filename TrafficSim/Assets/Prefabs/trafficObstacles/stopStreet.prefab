@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb54aa574fa40a4d8e2feb19aaa479b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obType: 0
   numPoints: 4
   pointSize: 0.2
+  pointPrefab: {fileID: 6281869752276000638, guid: b0653124b95ce894882b67f1bd00e797, type: 3}
   timeToStop: 2

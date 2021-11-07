@@ -15,7 +15,7 @@ public class stopStreet : trafficObstacle
             moving = order.Dequeue();
             car movingCar = moving.GetComponent<car>();
             movingCar.atObstacle = false;
-            movingCar.speed = movingCar.maxSpeed;
+            movingCar.start();
         }
         dequeing = false;
     }
