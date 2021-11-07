@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1462506413703160219}
   - component: {fileID: 1462506413703160216}
   - component: {fileID: 1462506413703160217}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: pedestrianCrossing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,7 +50,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numPoints: 4
-  pointSize: 0.2
   pointPrefab: {fileID: 6281869752276000638, guid: b0653124b95ce894882b67f1bd00e797, type: 3}
 --- !u!212 &1462506413703160216
 SpriteRenderer:
